@@ -5,11 +5,17 @@ const CLIENT_SECRET = 'fde7b5ac4d6b4c94b08afb01987adee1'; // Spotify Client Secr
 const TOKEN_URL = 'https://accounts.spotify.com/api/token';
 const ALBUM_URL = 'https://api.spotify.com/v1/albums';
 
-export const getAccessToken = async () => {
-  const response = await fetch("/api/getToken"); // Serverless Function 호출
-  const data = await response.json();
-  return data.accessToken;
+const getAccessToken = async () => {
+  try {
+    const response = await fetch("/api/getToken");
+    const data = await response.json();
+    return data.accessToken;
+  } catch (error) {
+    console.error("Error fetching access token:", error.message);
+    throw error;
+  }
 };
+
 
 
 export const getAlbumData = async (albumId, accessToken) => {

@@ -6,18 +6,11 @@ const TOKEN_URL = 'https://accounts.spotify.com/api/token';
 const ALBUM_URL = 'https://api.spotify.com/v1/albums';
 
 export const getAccessToken = async () => {
-  const response = await axios.post(
-    TOKEN_URL,
-    new URLSearchParams({ grant_type: 'client_credentials' }),
-    {
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-        Authorization: `Basic ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`,
-      },
-    }
-  );
-  return response.data.access_token;
+  const response = await fetch("/api/getToken"); // Serverless Function 호출
+  const data = await response.json();
+  return data.accessToken;
 };
+
 
 export const getAlbumData = async (albumId, accessToken) => {
   const response = await axios.get(`${ALBUM_URL}/${albumId}`, {
@@ -27,3 +20,4 @@ export const getAlbumData = async (albumId, accessToken) => {
   });
   return response.data;
 };
+

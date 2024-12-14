@@ -4,6 +4,13 @@ import "./SideBar.css"; // 스타일 연결
 
 const Sidebar = ({ playlist }) => {
   const navigate = useNavigate();
+  const [isPlaylistOpen, setIsPlaylistOpen] = useState(false);
+
+  // 플레이리스트 열림/닫힘 핸들러
+  const handleMyPlaylistClick = () => {
+    setIsPlaylistOpen((prevState) => !prevState);
+    navigate("/read");
+  };
 
   // 상태 관리
   const [isEditing, setIsEditing] = useState(false); // 프로필 수정 창 표시 여부
@@ -100,23 +107,21 @@ const Sidebar = ({ playlist }) => {
             🏠 Home
           </li>
           {/* 마이 플레이리스트 */}
-          <li
-            className="menu-item"
-            onClick={() => navigate("/read")} // My Playlist 클릭 시 /read 경로로 이동
-          >
-            🎵 My Playlist
-            <ul id="playlist-folder" className="playlist-folder">
-              {playlist.map((track) => (
-                <li key={track.id} className="playlist-item">
-                  {track.name} - {track.artist}
-                </li>
-              ))}
-            </ul>
-          </li>
+        <li className="menu-item" onClick={handleMyPlaylistClick}>
+          🎵 My Playlist
+          <ul id="playlist-folder" className={`playlist-folder ${isPlaylistOpen ? "open" : ""}`}>
+            {playlist.map((track) => (
+              <li key={track.id} className="playlist-item">
+                {track.name} - {track.artist}
+              </li>
+            ))}
+          </ul>
+        </li>
+
           {/* 검색 및 추가 */}
           <li
             className="menu-item"
-            onClick={() => navigate("/edit")} // Edit 클릭 시 /edit 경로로 이동
+            onClick={() => navigate("/edit")}
           >
             Edit
           </li>

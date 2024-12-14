@@ -4,38 +4,34 @@ import "./EditPage.css";
 
 const EditPage = ({ updateSidebar }) => {
   const [playlist, setPlaylist] = useState([]);
-  const [error, setError] = useState(false); // 에러 상태 관리 추가
+  const [error, setError] = useState(false);
 
-  // 초기 플레이리스트 로드
   useEffect(() => {
     const fetchPlaylist = async () => {
       try {
         const data = await getPlaylist();
-        setPlaylist(data); // 로컬 상태 업데이트
+        setPlaylist(data);
         updateSidebar(data); // 사이드바와 동기화
       } catch (error) {
         console.error("Error fetching playlist:", error);
-        setError(true); // 에러 상태 업데이트
+        setError(true);
       }
     };
     fetchPlaylist();
   }, [updateSidebar]);
 
-  // 삭제 버튼 핸들러
   const handleDelete = async (trackId) => {
     try {
-      // 곡 삭제 API 호출
       await deleteTrackFromPlaylist(trackId);
 
-      // 상태 업데이트
       const updatedPlaylist = playlist.filter((track) => track.id !== trackId);
       setPlaylist(updatedPlaylist); // 로컬 상태 업데이트
       updateSidebar(updatedPlaylist); // 사이드바 동기화
 
-      alert("Track deleted successfully!"); // 성공 메시지
+      alert("Track deleted successfully!");
     } catch (error) {
       console.error("Error deleting track:", error);
-      alert("Failed to delete track."); // 실패 메시지
+      alert("Failed to delete track.");
     }
   };
 
@@ -43,7 +39,6 @@ const EditPage = ({ updateSidebar }) => {
     <div className="edit-page">
       <h1>Edit Playlist</h1>
       <p>Edit your favorite tracks</p>
-      {/* 에러 메시지 표시 */}
       {error && (
         <p className="error-message">Failed to load playlist. Please try again later.</p>
       )}

@@ -15,7 +15,7 @@ const App = () => {
     const fetchPlaylist = async () => {
       try {
         const data = await getPlaylist();
-        setPlaylist(data);
+        setPlaylist(data); // 초기 상태 설정
       } catch (error) {
         console.error("Error loading playlist:", error);
       }
@@ -23,27 +23,31 @@ const App = () => {
     fetchPlaylist();
   }, []);
 
+  // 업데이트 함수
+  const updatePlaylist = (newPlaylist) => {
+    setPlaylist(newPlaylist);
+  };
+
   return (
     <Router>
       <div className="app">
-        {/* 메인 콘텐츠와 사이드바 */}
         <div className="main-content">
           <Routes>
             <Route
               path="/"
-              element={<SearchPage updateSidebar={setPlaylist} />}
+              element={<SearchPage updatePlaylist={updatePlaylist} />}
             />
             <Route
               path="/read"
-              element={<ReadPage updateSidebar={setPlaylist} />}
+              element={<ReadPage updatePlaylist={updatePlaylist} />}
             />
             <Route
               path="/edit"
-              element={<EditPage updateSidebar={setPlaylist} />}
+              element={<EditPage updateSidebar={updatePlaylist} />}
             />
             <Route
               path="/search&add"
-              element={<SearchPage updateSidebar={setPlaylist} />}
+              element={<SearchPage updatePlaylist={updatePlaylist} />}
             />
           </Routes>
         </div>

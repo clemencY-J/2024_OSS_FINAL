@@ -44,7 +44,7 @@ const Sidebar = ({ playlist }) => {
           className="edit-btn"
           onClick={() => setIsEditing((prev) => !prev)}
         >
-          ✏️
+          ⚙️
         </button>
         {isEditing && (
           <div id="profile-edit-container" className="profile-edit-container">
@@ -123,14 +123,14 @@ const Sidebar = ({ playlist }) => {
             className="menu-item"
             onClick={() => navigate("/edit")}
           >
-            Edit
+            ✏️ Edit
           </li>
           {/* Search & Add */}
           <li
             className="menu-item"
             onClick={() => navigate("/Search&add")} // Search & Add 클릭 시 /search&add 경로로 이동
           >
-            ➕ Search & Add
+            🔎 Search & ➕ Add
           </li>
         </ul>
       </nav>

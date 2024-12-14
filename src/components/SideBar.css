@@ -127,25 +127,22 @@
   }
   
   /* Playlist 폴더 */
-  .playlist-folder {
-    display: none; /* 기본 상태는 숨김 */
-    padding-left: 20px;
-    list-style: none;
-    margin-top: 10px;
-  }
-  
-  .playlist-folder.open {
-    display: block; /* 열릴 때 보이게 설정 */
-    max-height: 500px; /* 적당한 최대 높이 설정 */
-    transition: max-height 0.3s ease-in; /* 부드러운 열림 효과 */
-  }
-  
+.playlist-folder {
+  padding-left: 20px;
+  max-height: 0; /* 기본적으로 닫힌 상태 */
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.playlist-folder.open {
+  max-height: 500px; /* 적당한 최대 높이 설정 */
+  transition: max-height 0.3s ease-in;
+}
 
 .playlist-item {
   font-size: 0.9em;
   margin: 5px 0;
-  color: #a797a4;
-  padding-top: 10px;
+  color: #333;
 }
 
 .playlist-item:hover {
@@ -153,8 +150,18 @@
 }
 
 
-
-
+  
+  .playlist-item {
+    font-size: 0.9em;
+    margin: 5px 0;
+    color: #a4889d;
+    padding-top: 10px;
+  }
+  
+  .playlist-item:hover {
+    color: #8e5799;
+  }
+  
   /* 버튼 스타일 */
   .sidebar-buttons {
     margin-top: 20px;

@@ -42,11 +42,9 @@
 }
 
 .album-image {
-  position: absolute;
   top: 20.5%;
-  left: 20.5%;
-  width: 85px;
-  height: 85px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   border: 2px solid #f0b5e8;
 }

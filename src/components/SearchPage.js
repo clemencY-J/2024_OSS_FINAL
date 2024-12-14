@@ -25,21 +25,30 @@ const SearchPage = ({ updatePlaylist }) => {
 
   const handleAddTrack = async (track) => {
     try {
-      const addedTrack = await addTrackToPlaylist({
+      const trackToAdd = {
         id: track.id,
         name: track.name,
         artist: track.artist,
+        album: track.album,
         image: track.image,
-        audioUrl: track.previewUrl,
-      });
-
+        releaseDate: track.releaseDate, // 추가
+        duration: track.duration, // 추가
+        previewUrl: track.previewUrl, // 필드 이름 통일
+      };
+  
+      // MockAPI로 데이터 전송
+      const addedTrack = await addTrackToPlaylist(trackToAdd);
+  
+      // Playlist 업데이트
       updatePlaylist((prevPlaylist) => [...prevPlaylist, addedTrack]);
+  
       alert(`Track "${addedTrack.name}" by ${addedTrack.artist} added to the playlist!`);
     } catch (error) {
       console.error("Error adding track:", error);
       alert("Failed to add track to the playlist.");
     }
   };
+  
 
   return (
     <div className="search-page">

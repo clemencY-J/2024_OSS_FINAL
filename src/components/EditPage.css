@@ -44,12 +44,33 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* 트랙 정보 */
+/* 트랙 카드 내 세부 정보 스타일 */
 .track-info {
   display: flex;
-  align-items: center;
-  gap: 15px;
+  align-items: center; /* 수직 정렬 */
+
 }
+
+.track-details {
+  text-align: left; /* 텍스트 정렬을 왼쪽으로 */
+  flex: 1; /* 공간을 균등 분배 */
+}
+
+.track-details h3 {
+  margin: 0;
+  text-align: center; /* 제목 중앙 정렬 */
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.track-details p {
+  margin: 5px 0;
+  text-align: left; /* 부가 텍스트는 왼쪽 정렬 */
+  font-size: 14px;
+  color: #555;
+}
+
 
 .track-info img.album-cover {
   width: 60px;

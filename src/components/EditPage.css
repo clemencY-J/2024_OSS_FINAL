@@ -1,0 +1,83 @@
+/* Edit 페이지 컨테이너 */
+.edit-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  /* 헤더 스타일 */
+  .edit-page h1,
+  .edit-page h2 {
+    text-align: center;
+    color: #644967;
+  }
+  
+  /* 플레이리스트 컨테이너 */
+  .playlist-container {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 600px;
+  }
+  
+  /* 각 트랙 항목 */
+  .playlist-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  /* 앨범 사진 */
+  .album-art {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  /* 트랙 정보 */
+  .track-info {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .track-info h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .track-info p {
+    margin: 5px 0 0;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  /* 네비게이션 버튼 */
+  .navigation-buttons {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .navigation-buttons button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #644967;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .navigation-buttons button:hover {
+    background-color: #8e5799;
+  }
+  

@@ -1,0 +1,26 @@
+/* SearchPage 스타일 */
+.search-page {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .search-page input {
+    padding: 10px;
+    width: 60%;
+    max-width: 500px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    outline: none;
+  }
+  
+  .search-page input:focus {
+    border-color: #6b4a92;
+    box-shadow: 0 0 5px rgba(107, 74, 146, 0.5);
+  }
+  
+  .search-results {
+    margin-top: 20px;
+  }
+  

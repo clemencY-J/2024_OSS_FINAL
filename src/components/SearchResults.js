@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "./SearchResults.css"; // 추가된 CSS 연결
+import "./SearchResults.css";
 
 const SearchResults = ({ tracks, onAdd }) => {
-  const [currentAudio, setCurrentAudio] = useState(null); // 현재 재생 중인 오디오 상태
+  const [currentAudio, setCurrentAudio] = useState(null);
 
   const handlePlayPreview = (url) => {
     if (!url) {
@@ -10,13 +10,11 @@ const SearchResults = ({ tracks, onAdd }) => {
       return;
     }
 
-    // 기존 재생 중인 오디오 중지
     if (currentAudio) {
       currentAudio.pause();
       setCurrentAudio(null);
     }
 
-    // 새로운 오디오 재생
     const audio = new Audio(url);
     audio.play();
     setCurrentAudio(audio);

@@ -6,7 +6,6 @@
 
 .main-content {
   flex: 1; /* 메인 콘텐츠가 나머지 화면을 차지 */
-  padding: 20px;
   overflow-y: auto; /* 스크롤 가능 */
 }
 

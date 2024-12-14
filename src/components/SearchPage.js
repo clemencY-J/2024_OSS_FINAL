@@ -1,42 +1,63 @@
 import React, { useState } from "react";
 import { searchTracks } from "../services/SpotifyService";
+import { addTrackToPlaylist } from "../services/PlaylistService";
 import SearchResults from "./SearchResults";
-import { addTrackToPlaylist, getPlaylist } from "../services/PlaylistService";
-import "./SearchPage.css"; // 추가된 CSS 파일 연결
+import "./SearchPage.css";
 
-const SearchPage = ({ updateSidebar }) => {
+const SearchPage = ({ updatePlaylist }) => {
+  const [searchTerm, setSearchTerm] = useState("");
   const [tracks, setTracks] = useState([]);
 
-  const handleSearch = async (query) => {
-    const results = await searchTracks(query);
-    setTracks(results || []);
+  const handleSearch = async () => {
+    if (!searchTerm.trim()) {
+      alert("Please enter a search term.");
+      return;
+    }
+
+    try {
+      const results = await searchTracks(searchTerm);
+      setTracks(results);
+    } catch (error) {
+      console.error("Error fetching search results:", error);
+      alert("Failed to fetch search results. Please try again.");
+    }
   };
 
-  const handleAdd = async (track) => {
-    await addTrackToPlaylist({
-      id: track.id,
-      name: track.name,
-      artist: track.artists[0]?.name,
-      image: track.album.images[0]?.url,
-    });
-
-    // MockAPI에서 다시 데이터를 불러와 Sidebar 업데이트
-    const updatedPlaylist = await getPlaylist();
-    updateSidebar(updatedPlaylist);
-    alert(`${track.name} added to playlist!`);
+  const handleAddTrack = async (track) => {
+    try {
+      const addedTrack = await addTrackToPlaylist({
+        name: track.name,
+        artist: track.artists[0]?.name,
+        image: track.album.images[0]?.url,
+        audioUrl: track.preview_url,
+      });
+  
+      if (addedTrack) {
+        alert(`Track "${addedTrack.name}" by ${addedTrack.artist} added to the playlist!`);
+        updatePlaylist((prev) => [...prev, addedTrack]); // 사이드바 실시간 업데이트
+      } else {
+        throw new Error("Failed to retrieve added track.");
+      }
+    } catch (error) {
+      console.error("Error adding track:", error);
+      alert("Failed to add track to the playlist.");
+    }
   };
+  
 
   return (
     <div className="search-page">
-      <h1>Search for Songs</h1>
+      <h1>Search Tracks</h1>
       <div className="search-bar">
         <input
           type="text"
-          placeholder="Search for a song..."
-          onKeyDown={(e) => e.key === "Enter" && handleSearch(e.target.value)}
+          placeholder="Enter a track or artist name..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
+        <button onClick={handleSearch}>Search</button>
       </div>
-      <SearchResults tracks={tracks} onAdd={handleAdd} />
+      <SearchResults tracks={tracks} onAdd={handleAddTrack} />
     </div>
   );
 };

@@ -45,7 +45,7 @@ const Sidebar = ({ playlist }) => {
           {/* Search & Add */}
           <li
             className="menu-item"
-            onClick={() => navigate("/")} // Search & Add 클릭 시 / 경로로 이동
+            onClick={() => navigate("/Search&add")} // Search & Add 클릭 시 / 경로로 이동
           >
             ➕ Search & Add
           </li>

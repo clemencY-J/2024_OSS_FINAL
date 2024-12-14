@@ -1,113 +1,112 @@
 /* SearchResults 스타일 */
 .search-results {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-    margin-top: 20px;
-  }
-  
-  /* 개별 곡 카드 스타일 */
-  .track-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff;
-    width: 80%;
-    max-width: 600px;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-  
-  .track-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  }
-  
-  /* 앨범 이미지 */
-  .album-art {
-    flex: 0 0 auto;
-  }
-  
-  .album-image {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  
-  .album-image:hover {
-    transform: scale(1.1);
-  }
-  
-  /* 트랙 정보 */
-  .track-info {
-    flex: 1;
-    margin-left: 15px;
-    text-align: left;
-  }
-  
-  .track-info h4 {
-    font-size: 1.2rem;
-    margin: 0;
-    color: #333;
-  }
-  
-  .track-info p {
-    font-size: 0.9rem;
-    margin: 5px 0 0 0;
-    color: #666;
-  }
-  
-  /* 액션 버튼 */
-  .track-actions {
-    display: flex;
-    gap: 10px;
-  }
-  
-  .track-actions button {
-    padding: 8px 12px;
-    border: none;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .add-btn {
-    background-color: #6b4a92;
-    color: white;
-  }
-  
-  .add-btn:hover {
-    background-color: #57397e;
-  }
-  
-  .play-btn {
-    background-color: #4caf50;
-    color: white;
-  }
-  
-  .play-btn:hover {
-    background-color: #3e8e41;
-  }
-  
-  .stop-btn {
-    background-color: #f44336;
-    color: white;
-  }
-  
-  .stop-btn:hover {
-    background-color: #d32f2f;
-  }
-  
-  /* 검색 결과가 없을 때 메시지 */
-  .no-results {
-    font-size: 1rem;
-    color: #999;
-    margin-top: 20px;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* 개별 곡 카드 스타일 */
+.track-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  width: 80%;
+  max-width: 600px;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.track-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 앨범 이미지 */
+.album-art {
+  flex: 0 0 auto;
+}
+
+.album-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.album-image:hover {
+  transform: scale(1.1);
+}
+
+/* 트랙 정보 */
+.track-info {
+  flex: 1;
+  margin-left: 15px;
+  text-align: left;
+}
+
+.track-info h4 {
+  font-size: 1.2rem;
+  margin: 0;
+  color: #333;
+}
+
+.track-info p {
+  font-size: 0.9rem;
+  margin: 5px 0 0 0;
+  color: #666;
+}
+
+/* 액션 버튼 */
+.track-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.track-actions button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn {
+  background-color: #6b4a92;
+  color: white;
+}
+
+.add-btn:hover {
+  background-color: #57397e;
+}
+
+.play-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.play-btn:hover {
+  background-color: #3e8e41;
+}
+
+.stop-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.stop-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* 검색 결과가 없을 때 메시지 */
+.no-results {
+  font-size: 1rem;
+  color: #999;
+  margin-top: 20px;
+}

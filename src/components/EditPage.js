@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getPlaylist, deleteTrackFromPlaylist } from "../services/PlaylistService";
+import Header from "./Header"; // Header 임포트
 import "./EditPage.css";
 
 const EditPage = ({ updateSidebar }) => {
@@ -25,8 +26,8 @@ const EditPage = ({ updateSidebar }) => {
       await deleteTrackFromPlaylist(trackId);
 
       const updatedPlaylist = playlist.filter((track) => track.id !== trackId);
-      setPlaylist(updatedPlaylist); // 로컬 상태 업데이트
-      updateSidebar(updatedPlaylist); // 사이드바 동기화
+      setPlaylist(updatedPlaylist);
+      updateSidebar(updatedPlaylist);
 
       alert("Track deleted successfully!");
     } catch (error) {
@@ -37,6 +38,7 @@ const EditPage = ({ updateSidebar }) => {
 
   return (
     <div className="edit-page">
+      <Header /> {/* Header 추가 */}
       <h1>Edit Playlist</h1>
       <p>Edit your favorite tracks</p>
       {error && (

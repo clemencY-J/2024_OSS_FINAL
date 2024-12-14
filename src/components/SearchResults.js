@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./SearchResults.css";
 
+
 const SearchResults = ({ tracks, onAdd }) => {
   const [currentAudio, setCurrentAudio] = useState(null);
 

@@ -117,20 +117,19 @@ const Sidebar = ({ playlist }) => {
             ))}
           </ul>
         </li>
-
-          {/* 검색 및 추가 */}
+        {/* Search & Add */}
+        <li
+                  className="menu-item"
+                  onClick={() => navigate("/Search&add")} // Search & Add 클릭 시 /search&add 경로로 이동
+                >
+                  🔎 Search & ➕ Add
+                </li>
+          {/* 플레이리스트 수정 */}
           <li
             className="menu-item"
             onClick={() => navigate("/edit")}
           >
             ✏️ Edit
-          </li>
-          {/* Search & Add */}
-          <li
-            className="menu-item"
-            onClick={() => navigate("/Search&add")} // Search & Add 클릭 시 /search&add 경로로 이동
-          >
-            🔎 Search & ➕ Add
           </li>
         </ul>
       </nav>

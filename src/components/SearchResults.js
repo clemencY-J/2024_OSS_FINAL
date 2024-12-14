@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./SearchResults.css";
 
-
 const SearchResults = ({ tracks, onAdd }) => {
   const [currentAudio, setCurrentAudio] = useState(null);
 
@@ -34,22 +33,21 @@ const SearchResults = ({ tracks, onAdd }) => {
         tracks.map((track) => (
           <div key={track.id} className="track-card">
             <div className="album-art">
-              <img
-                src={track.album.images[0]?.url}
-                alt={track.name}
-                className="album-image"
-              />
+              <img src={track.image} alt={track.name} className="album-image" />
             </div>
             <div className="track-info">
               <h4>{track.name}</h4>
-              <p>{track.artists[0]?.name}</p>
+              <p>Artist: {track.artist}</p>
+              <p>Album: {track.album}</p>
+              <p>Release Date: {track.releaseDate}</p>
+              <p>Duration: {(track.duration / 1000).toFixed(2)} seconds</p>
             </div>
             <div className="track-actions">
               <button onClick={() => onAdd(track)} className="add-btn">
                 Add
               </button>
               <button
-                onClick={() => handlePlayPreview(track.preview_url)}
+                onClick={() => handlePlayPreview(track.previewUrl)}
                 className="play-btn"
               >
                 Play

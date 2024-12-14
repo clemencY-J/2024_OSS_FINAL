@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { searchTracks } from "../services/SpotifyService";
 import { addTrackToPlaylist } from "../services/PlaylistService";
 import SearchResults from "./SearchResults";
-import Header from "./Header"; // Header 임포트
 import "./SearchPage.css";
 
 const SearchPage = ({ updatePlaylist }) => {
@@ -27,10 +26,11 @@ const SearchPage = ({ updatePlaylist }) => {
   const handleAddTrack = async (track) => {
     try {
       const addedTrack = await addTrackToPlaylist({
+        id: track.id,
         name: track.name,
-        artist: track.artists[0]?.name,
-        image: track.album.images[0]?.url,
-        audioUrl: track.preview_url,
+        artist: track.artist,
+        image: track.image,
+        audioUrl: track.previewUrl,
       });
 
       updatePlaylist((prevPlaylist) => [...prevPlaylist, addedTrack]);
@@ -43,7 +43,6 @@ const SearchPage = ({ updatePlaylist }) => {
 
   return (
     <div className="search-page">
-      <Header /> {/* Header 추가 */}
       <h1>Search Tracks</h1>
       <div className="search-bar">
         <input

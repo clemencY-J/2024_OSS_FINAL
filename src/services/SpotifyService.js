@@ -8,7 +8,6 @@ const SEARCH_URL = "https://api.spotify.com/v1/search";
 let accessToken = null;
 
 const getAccessToken = async () => {
-  // 이미 저장된 토큰이 있다면 그대로 반환
   if (accessToken) return accessToken;
 
   try {
@@ -24,7 +23,6 @@ const getAccessToken = async () => {
     );
 
     accessToken = response.data.access_token;
-    console.log("Access token fetched successfully:", accessToken); // 디버깅용
     return accessToken;
   } catch (error) {
     console.error("Error fetching access token:", error);
@@ -43,13 +41,21 @@ export const searchTracks = async (query) => {
       params: {
         q: query,
         type: "track",
-        limit: 10, // 결과 갯수 제한
+        limit: 10,
       },
     });
 
-    // Spotify API에서 반환된 트랙 데이터를 로그로 출력
-    console.log("Search results:", response.data.tracks.items);
-    return response.data.tracks.items;
+    // 필요한 7개의 데이터를 추출하여 반환
+    return response.data.tracks.items.map((track) => ({
+      id: track.id,
+      name: track.name,
+      artist: track.artists[0]?.name,
+      album: track.album.name,
+      image: track.album.images[0]?.url,
+      releaseDate: track.album.release_date,
+      previewUrl: track.preview_url,
+      duration: track.duration_ms,
+    }));
   } catch (error) {
     console.error("Error fetching search results:", error);
     throw new Error("Failed to fetch search results.");
